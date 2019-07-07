@@ -1,0 +1,24 @@
+package com.defang.drools.rules
+import com.defang.drools.model.Order
+import com.defang.drools.model.Result
+
+rule "一般客户9折"
+when
+$order:Order($order.getCustomer().getType() == "1");
+then
+$result:Result($result.SetDiscount(0.9));
+ end
+
+rule "普通会员8折"
+when
+$order:Order($order.getCustomer().getType() == "2");
+then
+$result:Result($result.SetDiscount(0.8));
+ end
+
+rule "高级会员7折"
+when
+$order:Order($order.getCustomer().getType() == "3");
+then
+$result:Result($result.SetDiscount(0.7));
+ end

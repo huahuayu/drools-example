@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <drools.version>7.23.0.Final</drools.version>
     </properties>
 
     <dependencies>
@@ -45,45 +46,63 @@
         </dependency>
         <!-- com.defang.drools.rules lib -->
         <dependency>
-            <groupId>org.kie</groupId>
-            <artifactId>kie-api</artifactId>
-            <version>7.23.0.Final</version>
+
+            <groupId>org.drools</groupId>
+
+            <artifactId>drools-core</artifactId>
+
+            <version>${drools.version}</version>
+
         </dependency>
 
         <dependency>
-            <groupId>org.kie</groupId>
-            <artifactId>kie-internal</artifactId>
-            <version>7.23.0.Final</version>
-        </dependency>
-        <dependency>
+
             <groupId>org.drools</groupId>
-            <artifactId>drools-core</artifactId>
-            <version>7.23.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.drools</groupId>
+
             <artifactId>drools-compiler</artifactId>
-            <version>7.23.0.Final</version>
+
+            <version>${drools.version}</version>
+
         </dependency>
+
         <dependency>
+
             <groupId>org.drools</groupId>
+
             <artifactId>drools-decisiontables</artifactId>
-            <version>7.23.0.Final</version>
+
+            <version>${drools.version}</version>
+
         </dependency>
+
         <dependency>
+
             <groupId>org.drools</groupId>
+
             <artifactId>drools-templates</artifactId>
-            <version>7.23.0.Final</version>
+
+            <version>${drools.version}</version>
+
         </dependency>
+
         <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-cdi</artifactId>
-            <version>7.23.0.Final</version>
-        </dependency>
-        <dependency>
+
             <groupId>org.kie</groupId>
-            <artifactId>kie-ci</artifactId>
-            <version>7.23.0.Final</version>
+
+            <artifactId>kie-api</artifactId>
+
+            <version>${drools.version}</version>
+
+        </dependency>
+
+        <dependency>
+
+            <groupId>org.kie.server</groupId>
+
+            <artifactId>kie-server-client</artifactId>
+
+            <version>${drools.version}</version>
+
         </dependency>
     </dependencies>
 

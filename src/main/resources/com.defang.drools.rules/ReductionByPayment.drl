@@ -1,0 +1,26 @@
+package com.defang.drools.rules
+import com.defang.drools.model.Order
+import com.defang.drools.model.Result
+
+rule "信用卡支付无优惠"
+when
+$order:Order($order.getPayment().getName() == "信用卡");
+then
+System.out.println("信用卡无优惠");
+ end
+
+rule "微信支付，总价满100-5元(满200也是5元)"
+when
+$order:Order($order.getCustomer().getType() == "2");
+then
+System.out.println("微信支付满100-5元");
+$result:Result($result.);
+ end
+
+
+ rule "支付宝支付，满100-10元"
+ when
+$order:Order($order.getCustomer().getType() == "3");
+then
+$result:Result($result.SetDiscount(0.7));
+ end
