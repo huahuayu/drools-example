@@ -1,21 +1,29 @@
-## 功能
-1. 根据客户类型打折  
+## introduction 
+A spring boot pricing service by use drools engine
 
-| 客户类型  | 折扣  |
+## function
+1. discount by customer type  
+
+| customer  | discount  |
 |---|---|
-| 一般客户  | 9折  |
-| 普通会员  | 8折  |
-| 高级会员  | 7折  |
+| ordinary customer  | 10% off  |
+| vip  | 20% off  |
+| advanced vip  | 30% off  |
 
 
-2. 在此基础上再根据订单的价格和支付方式进行优惠    
+2. based on customer type discount, calculate reduction by payment method 
 
-| 支付方式  | 优惠  |
+| payment method  | reduction  |
 |---|---|
-| 信用卡  | 无优惠  |
-| 微信  | 满100-5元  |
-| 支付宝  | 满100-10元  |
+| creditCard  | no reduction  |
+| wepay  | $5 reduction when total amount > $100  |
+| alipay  | $10 reduction when total amount > $100  |
 
 
-## 扩展  
-根据商品类别、是否自营、地区（决定邮费）、商品组合优惠、活动（6.18当天图书全场满100-50）进行价格计算    
+## Future plan
+pricing by more condition combination, like:  
+1. product category
+1. production attribution(proprietary or third party)
+1. delivery address(determine the ship price)
+1. commodity combination sales 
+1. holiday campaign in limited date
