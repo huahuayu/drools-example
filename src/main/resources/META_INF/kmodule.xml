@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://www.drools.org/xsd/kmodule">
 
-    <kbase packages="com.defang" name="com.defang">
-        <ksession name="drools"/>
+    <kbase packages="com.defang.drools.rules" name="costprice">
+        <ksession name="costprice"></ksession>>
     </kbase>
 </kmodule>
 

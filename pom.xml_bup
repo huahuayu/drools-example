@@ -93,12 +93,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>org.kie</groupId>
-                <artifactId>kie-maven-plugin</artifactId>
-                <version>7.23.0.Final</version>
-                <extensions>true</extensions>
-            </plugin>
         </plugins>
     </build>
 
