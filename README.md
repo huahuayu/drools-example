@@ -1,7 +1,7 @@
-## introduction 
+## Introduction 
 A spring boot pricing service by use drools engine
 
-## function
+## Function
 1. discount by customer type  
 
 | customer  | discount  |
