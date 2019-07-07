@@ -16,7 +16,7 @@ public class PricingServiceImpl implements PricingService {
     @Override
     public Result getTheResult (Order order){
         /**
-         * 根据客户类型打折
+         * get discount by customer type
          */
         KieSession kieSession1 = kieService.getKieSession("DiscountByCustomer");
         Result result = new Result(order);
@@ -26,7 +26,7 @@ public class PricingServiceImpl implements PricingService {
         kieSession1.dispose();
 
         /**
-         * 根据支付类型打折
+         * get reduction by payment method
          */
         KieSession kieSession2 = kieService.getKieSession("ReductionByPayment");
         kieSession2.insert(order);

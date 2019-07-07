@@ -1,7 +1,7 @@
 package com.defang.drools.model;
 
 public class Payment {
-    // 信用卡、微信、支付宝
+    // 1-creditCard, 2-wepay, 3-alipay
     private String name;
 
     public Payment(String name) {

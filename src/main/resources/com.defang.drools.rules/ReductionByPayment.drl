@@ -2,25 +2,27 @@ package com.defang.drools.rules
 import com.defang.drools.model.Order
 import com.defang.drools.model.Result
 
-rule "信用卡支付无优惠"
+rule "pay by credit card, no reduction"
 when
-$order:Order($order.getPayment().getName() == "信用卡");
+$order:Order($order.getPayment().getName() == "creditCard");
 then
-System.out.println("信用卡无优惠");
+System.out.println("credit card, no reduction");
  end
 
-rule "微信支付，总价满100-5元(满200也是5元)"
+rule "wepay, $5 reduction when total amount greater than $100"
 when
-$order:Order($order.getCustomer().getType() == "2");
+$order:Order($order.getPayment().getName() == "wepay" && $order.getProduct().getPrice() > 100f);
 then
-System.out.println("微信支付满100-5元");
-$result:Result($result.);
+$result:Result($result.setReduction(5.00f));
+$result:Result($resuylt.setFinalPrice($order.getProduct().getPrice() - 5.00f);
+System.out.println("$5 reduction by wepay");
  end
 
-
- rule "支付宝支付，满100-10元"
+ rule "alipay, $10 redution when total amout greater than $100"
  when
-$order:Order($order.getCustomer().getType() == "3");
+$order:Order($order.getPayment().getName() == "alipay" && $order.getProduct().getPrice() > 100f);
 then
-$result:Result($result.SetDiscount(0.7));
+$result:Result($result.setReduction(10.00f));
+$result:Result($resuylt.setFinalPrice($order.getProduct().getPrice() - 10.00f);
+System.out.println("$10 reduction by alipay");
  end

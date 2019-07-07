@@ -20,9 +20,9 @@ public class DroolsTest {
 
     @Test
     public void getPriceTest() {
-        Order order1 = new Order(new Customer("zhangsan","2"),new Product("iphoneXR",6000.00f), new Payment("微信"));
-        Order order2 = new Order(new Customer("lisi","1"),new Product("macbook pro",15000.00f), new Payment("信用卡"));
-        Order order3 = new Order(new Customer("wangwu","3"),new Product("mouse",99.00f), new Payment("支付宝"));
+        Order order1 = new Order(new Customer("alice","2"),new Product("iphoneXR",1000.00f), new Payment("wepay"));
+        Order order2 = new Order(new Customer("bob","1"),new Product("macbook pro",2000.00f), new Payment("creditCard"));
+        Order order3 = new Order(new Customer("eva","3"),new Product("mouse",99.00f), new Payment("alipay"));
 
         System.out.println(pricingService.getTheResult(order1));
         System.out.println(pricingService.getTheResult(order2));

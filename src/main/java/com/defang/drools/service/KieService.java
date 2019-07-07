@@ -4,7 +4,7 @@ import org.kie.api.runtime.KieSession;
 
 public interface KieService {
     /**
-     * 通过kieName获得kieSession
+     * get kieSession by kieName
      *
      * @param kieName
      * @return KieSession

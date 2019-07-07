@@ -2,7 +2,7 @@ package com.defang.drools.model;
 
 public class Customer {
     private String name;
-    // 1-一般客户，2-普通会员，2-高级会员
+    // 1-ordinary customer, 2-vip member, 3-advanced vip
     private String type;
 
 
