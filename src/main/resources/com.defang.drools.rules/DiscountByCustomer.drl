@@ -7,7 +7,7 @@ when
 $order:Order($order.getCustomer().getType() == "1");
 then
 $result:Result($result.setDiscount(0.9f));
-$result:Result($resuylt.setFinalPrice($order.getProduct().getPrice() * 0.9f);
+$result:Result($result.setFinalPrice($order.getProduct().getPrice() * 0.9f);
  end
 
 rule "vip, 20% off"
@@ -15,7 +15,7 @@ when
 $order:Order($order.getCustomer().getType() == "2");
 then
 $result:Result($result.setDiscount(0.8f));
-$result:Result($resuylt.setFinalPrice($order.getProduct().getPrice() * 0.8f);
+$result:Result($result.setFinalPrice($order.getProduct().getPrice() * 0.8f);
  end
 
 rule "advanced vip, 30% off"
@@ -23,5 +23,5 @@ when
 $order:Order($order.getCustomer().getType() == "3");
 then
 $result:Result($result.setDiscount(0.7f));
-$result:Result($resuylt.setFinalPrice($order.getProduct().getPrice() * 0.7f);
+$result:Result($result.setFinalPrice($order.getProduct().getPrice() * 0.7f);
  end

@@ -14,7 +14,7 @@ when
 $order:Order($order.getPayment().getName() == "wepay" && $order.getProduct().getPrice() > 100f);
 then
 $result:Result($result.setReduction(5.00f));
-$result:Result($resuylt.setFinalPrice($order.getProduct().getPrice() - 5.00f);
+$result:Result($result.setFinalPrice($order.getProduct().getPrice() - 5.00f);
 System.out.println("$5 reduction by wepay");
  end
 
@@ -23,6 +23,6 @@ System.out.println("$5 reduction by wepay");
 $order:Order($order.getPayment().getName() == "alipay" && $order.getProduct().getPrice() > 100f);
 then
 $result:Result($result.setReduction(10.00f));
-$result:Result($resuylt.setFinalPrice($order.getProduct().getPrice() - 10.00f);
+$result:Result($result.setFinalPrice($order.getProduct().getPrice() - 10.00f);
 System.out.println("$10 reduction by alipay");
  end
