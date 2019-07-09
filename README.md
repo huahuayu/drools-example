@@ -26,16 +26,6 @@ A spring boot pricing service by use drools engine
 
 ## QuickStart
 ### clone repo
-```
-git clone https://github.com/huahuayu/drools.git
-```
-
-### import project
-open project in Intellij idea or Eclipse, wait for a moment to download dependencies.  
-
-
-## QuickStart
-### clone repo
 git clone https://github.com/huahuayu/drools.git
 
 ### import project
