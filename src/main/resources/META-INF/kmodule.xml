@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://www.drools.org/xsd/kmodule">
-    <kbase packages="com.defang.drools.rules" name="pricing">
+    <kbase packages="com.huahuayu.drools.rules" name="pricing">
         <ksession name="DiscountByCustomer"/>
         <ksession name="ReductionByPayment"/>
     </kbase>

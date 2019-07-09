@@ -1,8 +1,8 @@
-package com.defang.drools.controller;
+package com.huahuayu.drools.controller;
 
-import com.defang.drools.model.Order;
-import com.defang.drools.model.Result;
-import com.defang.drools.service.PricingService;
+import com.huahuayu.drools.model.Order;
+import com.huahuayu.drools.model.Result;
+import com.huahuayu.drools.service.PricingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

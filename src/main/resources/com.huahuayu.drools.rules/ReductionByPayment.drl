@@ -1,0 +1,30 @@
+package com.huahuayu.drools.rules
+import com.huahuayu.drools.model.Order
+import com.huahuayu.drools.model.Result
+
+rule "pay by credit card, no reduction"
+when
+$order:Order($order.getPayment().getName() == "creditCard");
+then
+//System.out.println("credit card, no reduction");
+ end
+
+rule "wepay, $5 reduction when total amount greater than $100"
+when
+$order:Order($order.getPayment().getName() == "wepay" && $order.getProduct().getPrice() > 100f);
+$result:Result();
+then
+$result.setReduction(5.00f);
+$result.setFinalPrice($order.getProduct().getPrice() - 5.00f);
+//System.out.println("$5 reduction by wepay");
+ end
+
+ rule "alipay, $10 redution when total amout greater than $100"
+ when
+$order:Order($order.getPayment().getName() == "alipay" && $order.getProduct().getPrice() > 100f);
+$result:Result();
+then
+$result.setReduction(10.00f);
+$result.setFinalPrice($order.getProduct().getPrice() - 10.00f);
+//System.out.println("$10 reduction by alipay");
+ end

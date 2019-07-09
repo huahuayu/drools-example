@@ -1,4 +1,4 @@
-package com.defang.drools.service;
+package com.huahuayu.drools.service;
 
 import org.kie.api.runtime.KieSession;
 

@@ -1,4 +1,4 @@
-package com.defang.drools;
+package com.huahuayu.drools;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

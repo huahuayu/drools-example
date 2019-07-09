@@ -1,5 +1,5 @@
-package com.defang.drools.service.impl;
-import com.defang.drools.service.KieService;
+package com.huahuayu.drools.service.impl;
+import com.huahuayu.drools.service.KieService;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;

@@ -1,7 +1,7 @@
-package com.defang.drools.service;
+package com.huahuayu.drools.service;
 
-import com.defang.drools.model.Order;
-import com.defang.drools.model.Result;
+import com.huahuayu.drools.model.Order;
+import com.huahuayu.drools.model.Result;
 
 /**
  * pricing service
