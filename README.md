@@ -33,6 +33,16 @@ git clone https://github.com/huahuayu/drools.git
 ### import project
 open project in Intellij idea or Eclipse, wait for a moment to download dependencies.  
 
+
+## QuickStart
+### clone repo
+```
+git clone https://github.com/huahuayu/drools.git
+```
+
+### import project
+open project in Intellij idea or Eclipse, wait for a moment to download dependencies.  
+
 ### run test
 [DroolsTest.java](https://github.com/huahuayu/drools/blob/master/src/test/java/com/huahuayu/drools/DroolsTest.java)  
 ``` java
