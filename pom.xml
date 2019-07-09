@@ -8,7 +8,7 @@
         <version>2.1.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.defang</groupId>
+    <groupId>com.huahuayu</groupId>
     <artifactId>drools</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>drools</name>
@@ -24,6 +24,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -34,80 +35,65 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-        <!-- com.defang.drools.com.huahuayu.drools.rules lib -->
+
         <dependency>
-
             <groupId>org.drools</groupId>
-
             <artifactId>drools-core</artifactId>
-
             <version>${drools.version}</version>
-
         </dependency>
 
         <dependency>
-
             <groupId>org.drools</groupId>
-
             <artifactId>drools-compiler</artifactId>
-
             <version>${drools.version}</version>
-
         </dependency>
 
         <dependency>
-
             <groupId>org.drools</groupId>
-
             <artifactId>drools-decisiontables</artifactId>
-
             <version>${drools.version}</version>
-
         </dependency>
 
         <dependency>
-
             <groupId>org.drools</groupId>
-
             <artifactId>drools-templates</artifactId>
-
             <version>${drools.version}</version>
-
         </dependency>
 
         <dependency>
-
             <groupId>org.kie</groupId>
-
             <artifactId>kie-api</artifactId>
-
             <version>${drools.version}</version>
-
         </dependency>
 
         <dependency>
-
             <groupId>org.kie.server</groupId>
-
             <artifactId>kie-server-client</artifactId>
-
             <version>${drools.version}</version>
-
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.22</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

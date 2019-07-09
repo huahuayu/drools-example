@@ -21,8 +21,17 @@
 | 微信  | 满100-5元（满200也是5元） |
 | 支付宝  | 满100-10元 |
 
-## 测试
-`src/test/java/com.huahuayu.drools/DroolsTest.java`  
+## QuickStart
+### 克隆项目
+```
+git clone https://github.com/huahuayu/drools.git
+```
+
+### 导入项目
+使用Intellij idea或者Eclipse打开项目，下载pom.xml中的依赖   
+
+### 执行测试
+[DroolsTest.java](https://github.com/huahuayu/drools/blob/master/src/test/java/com/huahuayu/drools/DroolsTest.java)  
 ``` java
 public class DroolsTest {
 
@@ -31,10 +40,14 @@ public class DroolsTest {
 
     @Test
     public void getPriceTest() {
+        // alice, 会员，购买iphoneXR，价格$1000, 使用微信支付  
         Order order1 = new Order(1,new Customer("alice","2"),new Product("iphoneXR",1000.00f), new Payment("wepay"));
+        // bob, 普通客户，购买macbook pro，价格$2000, 使用信用卡支付  
         Order order2 = new Order(2,new Customer("bob","1"),new Product("macbook pro",2000.00f), new Payment("creditCard"));
+        // eva, 高级会员，购买鼠标，价格$99, 使用支付宝支付  
         Order order3 = new Order(3,new Customer("eva","3"),new Product("mouse",99.00f), new Payment("alipay"));
-        Order order4 = new Order(3,new Customer("frank","4"),new Product("airpod",200.00f), new Payment("alipay"));
+        // frank, 高级会员，购买airpod，价格$200, 使用支付宝支付
+        Order order4 = new Order(4,new Customer("frank","3"),new Product("airpod",200.00f), new Payment("alipay"));
 
         System.out.println(pricingService.getTheResult(order1));
         System.out.println(pricingService.getTheResult(order2));
@@ -45,15 +58,15 @@ public class DroolsTest {
 }
 ```
 
-**Result**    
+**测试结果**    
 ```
-Result(order=Order(orderId=1, customer=Customer(name=alice, type=2), product=Product(name=iphoneXR, price=1000.0), payment=Payment(name=wepay)), discount=0.8, reduction=5.0, finalPrice=995.0)
+Result(order=Order(orderId=1, customer=Customer(name=alice, type=2), product=Product(name=iphoneXR, price=1000.0), payment=Payment(name=wepay)), discount=0.8, reduction=5.0, finalPrice=800.0)
 Result(order=Order(orderId=2, customer=Customer(name=bob, type=1), product=Product(name=macbook pro, price=2000.0), payment=Payment(name=creditCard)), discount=0.9, reduction=null, finalPrice=1800.0)
 Result(order=Order(orderId=3, customer=Customer(name=eva, type=3), product=Product(name=mouse, price=99.0), payment=Payment(name=alipay)), discount=0.7, reduction=null, finalPrice=69.299995)
-Result(order=Order(orderId=3, customer=Customer(name=frank, type=4), product=Product(name=airpod, price=200.0), payment=Payment(name=alipay)), discount=null, reduction=10.0, finalPrice=190.0)
+Result(order=Order(orderId=4, customer=Customer(name=frank, type=3), product=Product(name=airpod, price=200.0), payment=Payment(name=alipay)), discount=0.7, reduction=10.0, finalPrice=140.0)
 ```
 
-## 拓展 
+## 未来拓展 
 使用更多的规则组合进行定价，如：  
 1. 产品类别（电器、图书、母婴）  
 1. 产品归属 (自营还是第三方)  
