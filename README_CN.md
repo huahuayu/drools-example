@@ -49,10 +49,21 @@ public class DroolsTest {
         // frank, 高级会员，购买airpod，价格$200, 使用支付宝支付
         Order order4 = new Order(4,new Customer("frank","3"),new Product("airpod",200.00f), new Payment("alipay"));
 
-        System.out.println(pricingService.getTheResult(order1));
-        System.out.println(pricingService.getTheResult(order2));
-        System.out.println(pricingService.getTheResult(order3));
-        System.out.println(pricingService.getTheResult(order4));
+        Result result1 = pricingService.getTheResult(order1);
+        Result result2 = pricingService.getTheResult(order2);
+        Result result3 = pricingService.getTheResult(order3);
+        Result result4 = pricingService.getTheResult(order4);
+
+        System.out.println(result1);
+        System.out.println(result2);
+        System.out.println(result3);
+        System.out.println(result4);
+
+        assertEquals("order1 finalPrice is wrong",new Float(1000.00f * 0.8 - 5),result1.getFinalPrice());
+        assertEquals("order2 finalPrice is wrong",new Float(2000.00f * 0.9 - 0),result1.getFinalPrice());
+        assertEquals("order3 finalPrice is wrong",new Float(99.00f * 0.7 - 0),result1.getFinalPrice());
+        assertEquals("order4 finalPrice is wrong",new Float(200.00f * 0.7 - 10),result1.getFinalPrice());
+
     }
 
 }
