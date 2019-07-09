@@ -20,9 +20,21 @@ A spring boot pricing service by use drools engine
 | wepay  | $5 reduction when total amount > $100  |
 | alipay  | $10 reduction when total amount > $100  |
 
+## Drools version
+7.23.0.Final  
 
-## Test
-`src/test/java/com.huahuayu.drools/DroolsTest.java`  
+
+## QuickStart
+### clone repo
+```
+git clone https://github.com/huahuayu/drools.git
+```
+
+### import project
+open project in Intellij idea or Eclipse, wait for a moment to download dependencies.  
+
+### run test
+[DroolsTest.java](https://github.com/huahuayu/drools/blob/master/src/test/java/com/huahuayu/drools/DroolsTest.java)  
 ``` java
 public class DroolsTest {
 
