@@ -23,9 +23,7 @@
 
 ## QuickStart
 ### 克隆项目
-```
 git clone https://github.com/huahuayu/drools.git
-```
 
 ### 导入项目
 使用Intellij idea或者Eclipse打开项目，下载pom.xml中的依赖   
