@@ -46,6 +46,12 @@ open project in Intellij idea or Eclipse, wait for a moment to download dependen
 ### run test
 [DroolsTest.java](https://github.com/huahuayu/drools/blob/master/src/test/java/com/huahuayu/drools/DroolsTest.java)  
 ``` java
+public class DroolsTest {
+
+    @Autowired
+    private PricingService pricingService;
+
+
     @Test
     public void getPriceTest() {
         // alice, vip， buy iphoneXR，price $1000, use wepay
@@ -73,6 +79,8 @@ open project in Intellij idea or Eclipse, wait for a moment to download dependen
         assertEquals("order4 finalPrice is wrong",new Float(200.00f * 0.7 - 10),result1.getFinalPrice());
 
     }
+
+}
 ```
 
 **Result**    
