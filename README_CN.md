@@ -1,10 +1,18 @@
 ## 介绍 
-使用drools规则引擎实现的一个电商定价服务(框架spring boot)
+使用drools规则引擎实现的一个电商差异化定价服务  
+
+- 有三种不同级别的客户(普通、vip、vvip)
+
+- 不同类型的客户有不同的折扣  
+
+- 有三种不同的支付方式(信用卡、微信支付、支付宝)  
+
+- 不同的付款方式有机会获得不同的满减金额（如支付宝满100-10元）  
 
 ## 功能
 客户提交商品订单后，根据不同的规则计算最终的价格  
 
-1. 根据客户类型打折 
+**客户类型折扣**
 
 | 客户类别  | 折扣  |
 |---|---|
@@ -13,72 +21,176 @@
 | 高级会员  | 7折  |
 
 
-2. 基于客户类型打折后，再基于支付方式减价  
+**支付方式满减**  
 
-| 支付方式 | 减价  |
+| 支付方式 | 优惠  |
 |---|---|
-| 信用卡  | 无减价  |
-| 微信  | 满100-5元（满200也是5元） |
+| 信用卡  | 无  |
+| 微信  | 满100-5元 |
 | 支付宝  | 满100-10元 |
+
+两个优惠可以叠加  
 
 ## QuickStart
 ### 克隆项目
+``` bash
 git clone https://github.com/huahuayu/drools.git
+```
 
 ### 导入项目
-使用Intellij idea或者Eclipse打开项目，下载pom.xml中的依赖   
+使用Intellij idea或者Eclipse导入项目  
 
 ### 执行测试
 [DroolsTest.java](https://github.com/huahuayu/drools/blob/master/src/test/java/com/huahuayu/drools/DroolsTest.java)  
+
 ``` java
 public class DroolsTest {
 
     @Autowired
     private PricingService pricingService;
 
+
     @Test
     public void getPriceTest() {
-        // alice, 会员，购买iphoneXR，价格$1000, 使用微信支付  
-        Order order1 = new Order(1,new Customer("alice","2"),new Product("iphoneXR",1000.00f), new Payment("wepay"));
-        // bob, 普通客户，购买macbook pro，价格$2000, 使用信用卡支付  
-        Order order2 = new Order(2,new Customer("bob","1"),new Product("macbook pro",2000.00f), new Payment("creditCard"));
-        // eva, 高级会员，购买鼠标，价格$99, 使用支付宝支付  
-        Order order3 = new Order(3,new Customer("eva","3"),new Product("mouse",99.00f), new Payment("alipay"));
-        // frank, 高级会员，购买airpod，价格$200, 使用支付宝支付
-        Order order4 = new Order(4,new Customer("frank","3"),new Product("airpod",200.00f), new Payment("alipay"));
+        alicePrice();
+        bobPrice();
+        evaPrice();
+        frankPrice();
+    }
 
-        Result result1 = pricingService.getTheResult(order1);
-        Result result2 = pricingService.getTheResult(order2);
-        Result result3 = pricingService.getTheResult(order3);
-        Result result4 = pricingService.getTheResult(order4);
+    @Test
+    public void alicePrice(){
+        // alice, vip， buy iphone，price $1000, use wepay
+        Order order = new Order(1,new Customer("alice", CustomerType.VIP),new Product("iphone",1000.00f), PaymentMethod.WEPAY);
+        Result result = pricingService.getTheResult(order);
+        assertEquals("order1 price is wrong",  new Float(1000.00f * 0.8 - 5),result.getFinalPrice());
+    }
 
-        System.out.println(result1);
-        System.out.println(result2);
-        System.out.println(result3);
-        System.out.println(result4);
+    @Test
+    public void bobPrice(){
+        // bob, ordinary customer，buy macbook pro，price $2000, use credit card
+        Order order = new Order(2,new Customer("bob",CustomerType.ORDINARY),new Product("macbook pro",2000.00f), PaymentMethod.CREDITCARD);
+        Result result = pricingService.getTheResult(order);
+        assertEquals("bob price is wrong",new Float(2000.00f * 0.9 - 0),result.getFinalPrice());
+    }
 
-        assertEquals("order1 finalPrice is wrong",new Float(1000.00f * 0.8 - 5),result1.getFinalPrice());
-        assertEquals("order2 finalPrice is wrong",new Float(2000.00f * 0.9 - 0),result1.getFinalPrice());
-        assertEquals("order3 finalPrice is wrong",new Float(99.00f * 0.7 - 0),result1.getFinalPrice());
-        assertEquals("order4 finalPrice is wrong",new Float(200.00f * 0.7 - 10),result1.getFinalPrice());
+    @Test
+    public void evaPrice(){
+        // eva, vvip，buy mouse，price $99, use alipay
+        Order order = new Order(3,new Customer("eva",CustomerType.VVIP),new Product("mouse",98.00f), PaymentMethod.ALIPAY);
+        Result result = pricingService.getTheResult(order);
+        assertEquals("eva price is wrong",new Float(98.00f * 0.7 - 0),result.getFinalPrice());
+    }
 
+    @Test
+    public void frankPrice(){
+        // frank, vvip, buy airpod, price $200, use alipay
+        Order order = new Order(4,new Customer("frank",CustomerType.VVIP),new Product("airpod",200.00f), PaymentMethod.ALIPAY);
+        Result result = pricingService.getTheResult(order);
+        assertEquals("frank price is wrong",new Float(200.00f * 0.7 - 10),result.getFinalPrice());
     }
 
 }
 ```
 
-**测试结果**    
+**结果**    
 ```
-Result(order=Order(orderId=1, customer=Customer(name=alice, type=2), product=Product(name=iphoneXR, price=1000.0), payment=Payment(name=wepay)), discount=0.8, reduction=5.0, finalPrice=800.0)
-Result(order=Order(orderId=2, customer=Customer(name=bob, type=1), product=Product(name=macbook pro, price=2000.0), payment=Payment(name=creditCard)), discount=0.9, reduction=null, finalPrice=1800.0)
-Result(order=Order(orderId=3, customer=Customer(name=eva, type=3), product=Product(name=mouse, price=99.0), payment=Payment(name=alipay)), discount=0.7, reduction=null, finalPrice=69.299995)
-Result(order=Order(orderId=4, customer=Customer(name=frank, type=3), product=Product(name=airpod, price=200.0), payment=Payment(name=alipay)), discount=0.7, reduction=10.0, finalPrice=140.0)
+alice price: 795.0
+bob price: 1800.0
+eva price: 68.6
+frank price: 130.0
+```
+
+### Api
+提供了一个api来计算价格，可以调用接口来计算订单的最终价格  
+
+``` java
+    @PostMapping("/getPrice")
+    public Result getPrice(@RequestBody Order order) {
+        return pricingService.getTheResult(order);
+    }
+```
+
+**request**  
+
+| 字段  | 含义  | 备注  |
+|---|---|---|
+| orderId  | 订单id  |   |
+| customer  | 客户信息  |   |
+| customer.name  | 客户姓名  |   |
+| customer.type  | 客户类型  | ORDINARY-普通客户，VIP-VIP客户，VVIP-高级VIP客户  |
+| product  | 商品信息  |   |
+| product.name  | 商品名  |   |
+| product.price  | 商品价格  |   |
+| paymentMethod  | 支付方式  | CREDITCARD-信用卡，WEPAY-微信支付，ALIPAY-支付宝  |
+
+**response**
+
+| 字段  | 含义  | 备注  |
+|---|---|---|
+| orderId  | 订单id  |   |
+| customer  | 客户信息  |   |
+| customer.name  | 客户姓名  |   |
+| customer.type  | 客户类型  | ORDINARY-普通客户，VIP-VIP客户，VVIP-高级VIP客户  |
+| product  | 商品信息  |   |
+| product.name  | 商品名  |   |
+| product.price  | 商品价格  |   |
+| paymentMethod  | 支付方式  | CREDITCARD-信用卡，WEPAY-微信支付，ALIPAY-支付宝  |
+| discount  | 折扣  |   |
+| reduction  | 满减金额  |   |
+| finalPrice  | 最终价格  |   |
+
+<br>
+**示例request**  
+``` json
+{
+    "orderId": "1",
+    "customer": {
+        "name": "alice",
+        "type": "VIP"
+    },
+    "product": {
+        "name": "iphone",
+        "price": 1000.00
+    },
+    "paymentMethod": "WEPAY"
+}
+```
+
+<br>
+**示例response**  
+``` json
+{
+    "order": {
+        "orderId": 1,
+        "customer": {
+            "name": "alice",
+            "type": "VIP"
+        },
+        "product": {
+            "name": "iphone",
+            "price": 1000
+        },
+        "paymentMethod": "WEPAY"
+    },
+    "discount": 0.8,
+    "reduction": 5,
+    "finalPrice": 795
+}
 ```
 
 ## 未来拓展 
-使用更多的规则组合进行定价，如：  
-1. 产品类别（电器、图书、母婴）  
-1. 产品归属 (自营还是第三方)  
-1. 收货地址 (决定运费)
-1. 促销组合减价（如：A充电器+B充电线组合购买，减5元）   
-1. 按活动/节日减价(如6.18)   
+- 使用更多的规则组合进行定价，如：  
+    1. 产品类别（电器、图书、母婴）  
+    2. 产品归属 (自营还是第三方)  
+    3. 收货地址 (决定运费)  
+    4. 促销组合减价（如：A充电器+B充电线组合购买，减5元）   
+    5. 按活动/节日减价(如6.18)   
+
+- 从数据库配置规则  
+
+- 将规则缓存，提高执行速度  
+
+- 在线测试规则  
+
+ 

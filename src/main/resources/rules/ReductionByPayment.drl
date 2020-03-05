@@ -1,0 +1,35 @@
+package cn.liushiming.drools.rules.reduction;
+import cn.liushiming.drools.model.Order;
+import cn.liushiming.drools.common.type.PaymentMethod;
+global  cn.liushiming.drools.model.Result result;
+
+rule "credit card, no reduction"
+no-loop true
+lock-on-active true
+when
+    $order:Order($order.getPaymentMethod() == PaymentMethod.CREDITCARD);
+then
+    System.out.println("credit card, no reduction");
+ end
+
+rule "wepay, $5 reduction when total amount greater than $100"
+no-loop true
+lock-on-active true
+when
+    $order:Order($order.getPaymentMethod() == PaymentMethod.WEPAY && $order.getProduct().getPrice() > 100f);
+then
+    result.setReduction(5.00f);
+    result.setFinalPrice(result.getFinalPrice() - 5.00f);
+    System.out.println("$5 reduction by wepay");
+ end
+
+rule "alipay, $10 redution when total amout greater than $100"
+no-loop true
+lock-on-active true
+when
+    $order:Order($order.getPaymentMethod() == PaymentMethod.ALIPAY && $order.getProduct().getPrice() > 100f);
+then
+    result.setReduction(10.00f);
+    result.setFinalPrice(result.getFinalPrice() - 10.00f);
+    System.out.println("$10 reduction by alipay");
+ end

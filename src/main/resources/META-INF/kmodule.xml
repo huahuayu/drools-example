@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://www.drools.org/xsd/kmodule">
-    <kbase packages="com.huahuayu.drools.rules" name="pricing">
+    <kbase packages="cn.liushiming.drools.rules.discount" name="discount">
         <ksession name="DiscountByCustomer"/>
+    </kbase>
+
+    <kbase packages="cn.liushiming.drools.rules.reduction" name="reduction">
         <ksession name="ReductionByPayment"/>
     </kbase>
 </kmodule>

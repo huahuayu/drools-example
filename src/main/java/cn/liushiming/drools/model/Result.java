@@ -1,6 +1,9 @@
-package com.huahuayu.drools.model;
+package cn.liushiming.drools.model;
 import lombok.Data;
 
+/**
+ * @author shiming
+ */
 @Data
 public class Result {
     private Order order;

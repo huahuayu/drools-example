@@ -1,0 +1,38 @@
+package cn.liushiming.drools.rules.discount;
+import cn.liushiming.drools.model.Order;
+import cn.liushiming.drools.model.Customer;
+import cn.liushiming.drools.common.type.CustomerType;
+global cn.liushiming.drools.model.Result result;
+
+rule "ordinary customer, 10% off"
+no-loop true
+lock-on-active true
+when
+    $order:Order($order.getCustomer().getType() == CustomerType.ORDINARY);
+then
+    result.setDiscount(0.9f);
+    result.setFinalPrice($order.getProduct().getPrice() * 0.9f);
+    System.out.println("ordinary customer, 10% off");
+ end
+
+rule "vip, 20% off"
+no-loop true
+lock-on-active true
+when
+    $order:Order($order.getCustomer().getType() == CustomerType.VIP);
+then
+    result.setDiscount(0.8f);
+    result.setFinalPrice($order.getProduct().getPrice() * 0.8f);
+    System.out.println("vip, 20% off");
+ end
+
+rule "vvip, 30% off"
+no-loop true
+lock-on-active true
+when
+    $order:Order($order.getCustomer().getType() == CustomerType.VVIP);
+then
+    result.setDiscount(0.7f);
+    result.setFinalPrice($order.getProduct().getPrice() * 0.7f);
+    System.out.println("vvip, 30% off");
+ end
