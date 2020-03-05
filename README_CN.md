@@ -178,6 +178,29 @@ response
 }
 ```
 
+try it  
+
+``` bash
+curl --request POST \
+  --url http://localhost:8080/getPrice \
+  --header 'cache-control: no-cache' \
+  --header 'content-type: application/json' \
+  --data '{
+    "orderId": "1",
+    "customer": {
+        "name": "alice",
+        "type": "VIP"
+    },
+    "product": {
+        "name": "iphone",
+        "price": 1000.00
+    },
+    "paymentMethod": "WEPAY"
+}'
+```
+
+
+
 ## 未来拓展 
 - 使用更多的规则组合进行定价，如：  
     1. 产品类别（电器、图书、母婴）  

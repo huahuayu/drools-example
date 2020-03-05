@@ -145,4 +145,23 @@ sample output
 }
 ```
 
+try it   
 
+``` bash
+curl --request POST \
+  --url http://localhost:8080/getPrice \
+  --header 'cache-control: no-cache' \
+  --header 'content-type: application/json' \
+  --data '{
+    "orderId": "1",
+    "customer": {
+        "name": "alice",
+        "type": "VIP"
+    },
+    "product": {
+        "name": "iphone",
+        "price": 1000.00
+    },
+    "paymentMethod": "WEPAY"
+}'
+```
