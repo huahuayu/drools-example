@@ -111,7 +111,7 @@ frank price: 130.0
     }
 ```
 
-**request**  
+request  
 
 | 字段  | 含义  | 备注  |
 |---|---|---|
@@ -124,7 +124,7 @@ frank price: 130.0
 | product.price  | 商品价格  |   |
 | paymentMethod  | 支付方式  | CREDITCARD-信用卡，WEPAY-微信支付，ALIPAY-支付宝  |
 
-**response**
+response
 
 | 字段  | 含义  | 备注  |
 |---|---|---|
@@ -140,8 +140,7 @@ frank price: 130.0
 | reduction  | 满减金额  |   |
 | finalPrice  | 最终价格  |   |
 
-<br>
-**示例request**  
+示例request  
 ``` json
 {
     "orderId": "1",
@@ -157,8 +156,8 @@ frank price: 130.0
 }
 ```
 
-<br>
-**示例response**  
+示例response  
+
 ``` json
 {
     "order": {
