@@ -41,7 +41,7 @@ git clone https://github.com/huahuayu/drools.git
 使用Intellij idea或者Eclipse导入项目  
 
 ### 执行测试
-[DroolsTest.java](https://github.com/huahuayu/drools/blob/master/src/test/java/com/huahuayu/drools/DroolsTest.java)  
+[DroolsTest.java](https://github.com/huahuayu/drools-example/blob/master/src/test/java/cn/liushiming/drools/DroolsTest.java)  
 
 ``` java
 public class DroolsTest {
