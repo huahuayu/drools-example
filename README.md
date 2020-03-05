@@ -1,4 +1,4 @@
-[中文介绍](https://github.com/huahuayu/drools/blob/master/README_CN.md)
+[中文介绍](https://github.com/huahuayu/drools-example/blob/master/README_CN.md)
 ## Introduction 
 drools example in e-commerce business rules to calculate the final price to pay  
 
@@ -35,7 +35,7 @@ git clone https://github.com/huahuayu/drools.git
 import project to Intellij idea or Eclipse
 
 ### run test
-[DroolsTest.java](https://github.com/huahuayu/drools/blob/master/src/test/java/com/huahuayu/drools/DroolsTest.java) 
+[DroolsTest.java](https://github.com/huahuayu/drools-example/blob/master/src/test/java/cn/liushiming/drools/DroolsTest.java) 
  
 ``` java
 public class DroolsTest {
