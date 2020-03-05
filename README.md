@@ -97,14 +97,16 @@ frank price: 130.0
 
 ### Api
 An api is provided to calculate price, so every order gets a differentiation price  
+
 ``` java
     @PostMapping("/getPrice")
     public Result getPrice(@RequestBody Order order) {
         return pricingService.getTheResult(order);
     }
 ```
-<br>
-**sample input**  
+
+sample input 
+
 ``` json
 {
     "orderId": "1",
@@ -120,8 +122,9 @@ An api is provided to calculate price, so every order gets a differentiation pri
 }
 ```
 
-<br>
-**sample output**  
+
+sample output
+
 ``` json
 {
     "order": {
