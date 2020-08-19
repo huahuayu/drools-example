@@ -17,6 +17,7 @@ drools example in e-commerce business rules to calculate the final price to pay
 | vvip  | 30% off  |
 
 <br>
+
 **reduction by payment method** 
 
 | payment method  | reduction  |
