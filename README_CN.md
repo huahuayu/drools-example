@@ -41,6 +41,9 @@ git clone https://github.com/huahuayu/drools.git
 使用Intellij idea或者Eclipse导入项目  
 
 ### 执行测试
+
+alice,bob,eva,frank是不同级别的客户，买了不同价格的商品，用了不同的支付方式，他们最终应该享受多少折扣、多少满减，最终支付价格是多少？
+
 [DroolsTest.java](https://github.com/huahuayu/drools-example/blob/master/src/test/java/cn/liushiming/drools/DroolsTest.java)  
 
 ``` java
